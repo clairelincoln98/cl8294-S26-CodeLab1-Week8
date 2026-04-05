@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject bath;
     public GameObject cabinent;
     public GameObject crack;
+    public GameObject frontdoor;
     
     public GameManager instance;
     public bool hasPliers;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //key for which int matches with which direction (parameters for button to act upon)
     //North = 0
     //E = 1
     //W = 2
@@ -67,11 +69,10 @@ public class GameManager : MonoBehaviour
     
     public void MoveDirection(int direction)
     {
-        //TODO: make the location actually change when this function is called
 
         if (direction == 0) //north
         {
-            currentLocation.northLocation.southLocation = currentLocation;
+            currentLocation.northLocation.southLocation = currentLocation; //sets the south location of this location's north location to the current position
             currentLocation = currentLocation.northLocation;
             
         }
@@ -94,27 +95,27 @@ public class GameManager : MonoBehaviour
         }
 
         currentLocation.UpdateLocationDisplay(this); 
-        currentLocation.ChangeCameraColor();
+        currentLocation.ChangeCameraColor(); //calls on location to change the camera color based on the current location's values
         
     }
 
-    public void ChangeBackgroundColor()
+    public void ChangeBackgroundColor() //calls a function in Location script that updates the text
     {
         currentLocation.ChangeCameraColor();
     }
 
-    public void ShowFireText()
+    public void ShowFireText() //calls a function in Location script that updates the text
     {
         currentLocation.ActivateFirePlace(this);
     }
     
-    public void ShowDeskText()
+    public void ShowDeskText() //calls a function in Location script that updates the text
     {
         currentLocation.ActivateDesk(this);
         hasPliers = true;
     }
     
-    public void ShowWaterText()
+    public void ShowWaterText() //calls a function in Location script that updates the text
     {
         currentLocation.ActivateWater(this);
         if (isCut)
@@ -123,12 +124,12 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public void ShowCabinentText()
+    public void ShowCabinentText() //calls a function in Location script that updates the text
     {
         currentLocation.ActivateCabinent(this);
-        if (hasKey)
+        if (hasKey) //checks if the player got the key
         {
-            hasFlashlight = true;
+            hasFlashlight = true; //marks that the player now has a flashlight
         }
     }
     
@@ -138,7 +139,16 @@ public class GameManager : MonoBehaviour
         {
             currentLocation.ActivateCrack(this);
         }
+        
+        
 
     }
    
+    
+    public void ShowDoorText()
+    {
+      
+        currentLocation.ActivateDoor(this);
+            
+    }
 }

@@ -18,13 +18,14 @@ MonoBehaviour:
     it is.
   waterText: 
   cabinentText: 
+  crackText: 
   description: The furniture is covered in sheets. There must be something in here
     I can use.
   northLocation: {fileID: 0}
   westLocation: {fileID: 11400000, guid: 4511415646f7e0d4995677b00a56d1f4, type: 2}
   eastLocation: {fileID: 0}
   southLocation: {fileID: 0}
-  cameraColor: {x: 0.1, y: 0.01, z: 0.01, w: 0}
+  cameraColor: {x: 0.3, y: 0.01, z: 0.01, w: 0}
   isLivingroom: 0
   isBedroom: 1
   isBathroom: 0
